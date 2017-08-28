@@ -97,13 +97,11 @@ public class Espetaculo {
      * Repare que a data da primeira sessao é sempre a data inicial.
      */
 	public List<Sessao> criaSessoes(LocalDate inicio, LocalDate fim, LocalTime horario, Periodicidade periodicidade) {
-		// ALUNO: Não apague esse metodo. Esse sim será usado no futuro! ;)
 		return null;
 	}
 	
 	public boolean Vagas(int qtd, int min)
    {
-       // ALUNO: Não apague esse metodo. Esse sim será usado no futuro! ;)
        int totDisp = 0;
 
        for (Sessao s : sessoes)
@@ -118,7 +116,6 @@ public class Espetaculo {
 
    public boolean Vagas(int qtd)
    {
-       // ALUNO: Não apague esse metodo. Esse sim será usado no futuro! ;)
        int totDisp = 0;
 
        for (Sessao s : sessoes)

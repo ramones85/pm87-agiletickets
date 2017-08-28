@@ -38,7 +38,6 @@ public class CalculadoraDePrecos {
 				preco = preco.add(sessao.getPreco().multiply(BigDecimal.valueOf(0.10)));
 			}
 		}  else {
-			//nao aplica aumento para teatro (quem vai é pobretão)
 			preco = sessao.getPreco();
 		} 
 
