@@ -100,7 +100,8 @@ public class Espetaculo {
      * 
      * Repare que a data da primeira sessao é sempre a data inicial.
      */
-	public List<Sessao> criaSessoes(LocalDate inicio, LocalDate fim, LocalTime horario, Periodicidade periodicidade) {
+	public List<Sessao> criaSessoes(LocalDate inicio, LocalDate fim, LocalTime horario, Periodicidade periodicidade)
+throws IllegalArgumentException {
 		List<Sessao> sessoes = new ArrayList<Sessao>();
 		
 		int diferenca = 0;
@@ -109,9 +110,18 @@ public class Espetaculo {
 		} else {
 			diferenca = Weeks.weeksBetween(inicio, fim).getWeeks();
 		}
+		
+		if (diferenca < 0) {
+			throw new IllegalArgumentException("20 anos de curso, porra");
+		}
 				
 		for(int i=0; i<=diferenca; i++){
-			DateTime inicioSessao = inicio.plusDays(i).toDateTime(horario);
+			DateTime inicioSessao;
+			if (periodicidade.equals(Periodicidade.DIARIA)) {
+				inicioSessao = inicio.plusDays(i).toDateTime(horario);
+			} else {
+				inicioSessao = inicio.plusWeeks(i).toDateTime(horario);
+			}
 			Sessao sessao = new Sessao(inicioSessao);
 			sessoes.add(sessao);
 		}		

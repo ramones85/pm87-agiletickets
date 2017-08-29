@@ -108,7 +108,7 @@ public class EspetaculoTest {
 		Assert.assertEquals(4, sessoes.size());
 	}
 		
-	@Test
+	@Test(expected = Exception.class)  
 	public void CriaSessaoDiariaDataFinalMenorQueDataInicial () {
 		Espetaculo espetaculo = new Espetaculo();
 		LocalDate inicio = new LocalDate();
@@ -134,7 +134,7 @@ public class EspetaculoTest {
 		Assert.assertEquals(3, sessoes.size());
 	}
 	
-	@Test
+	@Test(expected = Exception.class)  
 	public void CriaSessaoSemanalComDataInicialMaiorDoQueDataFinal() {
 		Espetaculo espetaculo = new Espetaculo();
 		LocalDate inicio = new LocalDate();
