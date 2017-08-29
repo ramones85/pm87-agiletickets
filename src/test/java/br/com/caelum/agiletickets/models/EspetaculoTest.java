@@ -1,9 +1,18 @@
 package br.com.caelum.agiletickets.models;
 
+import static com.google.common.collect.Lists.newArrayList;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+import org.joda.time.LocalDate;
+import org.joda.time.LocalTime;
 import org.junit.Test;
+
+import junit.framework.Assert;
 
 public class EspetaculoTest {
 
@@ -72,7 +81,72 @@ public class EspetaculoTest {
 
 		assertFalse(ivete.Vagas(5, 3));
 	}
-
+	
+	@Test
+	public void CriaSessaoComDataInicialIgualAFinal () {
+		Espetaculo espetaculo = new Espetaculo();
+		LocalDate inicio = new LocalDate();
+		LocalDate fim = new LocalDate();
+		LocalTime horario = new LocalTime();
+		Periodicidade periodicidade = Periodicidade.DIARIA;
+		List<Sessao> sessoes = new ArrayList<Sessao>();
+		sessoes = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
+		
+		Assert.assertEquals(1, sessoes.size());
+	}
+	
+	@Test
+	public void CriaSessaoDiariaComDataFinalMaiorDoQueDataInicial () {
+		Espetaculo espetaculo = new Espetaculo();
+		LocalDate inicio = new LocalDate();
+		LocalDate fim = inicio.plusDays(3);
+		LocalTime horario = new LocalTime();
+		Periodicidade periodicidade = Periodicidade.DIARIA;
+		List<Sessao> sessoes = new ArrayList<Sessao>();
+		sessoes = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
+		
+		Assert.assertEquals(4, sessoes.size());
+	}
+		
+	@Test
+	public void CriaSessaoDiariaDataFinalMenorQueDataInicial () {
+		Espetaculo espetaculo = new Espetaculo();
+		LocalDate inicio = new LocalDate();
+		LocalDate fim = inicio.plusDays(-3);
+		LocalTime horario = new LocalTime();
+		Periodicidade periodicidade = Periodicidade.DIARIA;
+		List<Sessao> sessoes = new ArrayList<Sessao>();
+		sessoes = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
+		
+		Assert.assertEquals(0, sessoes.size());
+	}
+	
+	@Test
+	public void CriaSessaoSemanalComDataInicialMenorDoQueDataFinal() {
+		Espetaculo espetaculo = new Espetaculo();
+		LocalDate inicio = new LocalDate();
+		LocalDate fim = inicio.plusDays(14);
+		LocalTime horario = new LocalTime();
+		Periodicidade periodicidade = Periodicidade.SEMANAL;
+		List<Sessao> sessoes = new ArrayList<Sessao>();
+		sessoes = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
+		
+		Assert.assertEquals(3, sessoes.size());
+	}
+	
+	@Test
+	public void CriaSessaoSemanalComDataInicialMaiorDoQueDataFinal() {
+		Espetaculo espetaculo = new Espetaculo();
+		LocalDate inicio = new LocalDate();
+		LocalDate fim = inicio.plusDays(-14);
+		LocalTime horario = new LocalTime();
+		Periodicidade periodicidade = Periodicidade.SEMANAL;
+		List<Sessao> sessoes = new ArrayList<Sessao>();
+		sessoes = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
+		
+		Assert.assertEquals(0, sessoes.size());
+	}
+	
 	private Sessao sessaoComIngressosSobrando(int quantidade) {
 		Sessao sessao = new Sessao();
 		sessao.setTotalIngressos(quantidade * 2);
@@ -80,5 +154,7 @@ public class EspetaculoTest {
 
 		return sessao;
 	}
+	
+	
 	
 }
