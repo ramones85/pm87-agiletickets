@@ -6,22 +6,19 @@ import br.com.caelum.agiletickets.models.Sessao;
 import br.com.caelum.agiletickets.models.TipoDeEspetaculo;
 
 public class CalculadoraDePrecos {
-	//quando estiver acabando os ingressos...
-	private static double percentualIngressosDisponiveis(Sessao sessao) {		
-		return (sessao.getTotalIngressos() - sessao.getIngressosReservados()) / sessao.getTotalIngressos().doubleValue();
-	}
+	
 	
 	public static BigDecimal calcula(Sessao sessao, Integer quantidade) {
 		BigDecimal preco;			
 		
 		if(sessao.getEspetaculo().getTipo().equals(TipoDeEspetaculo.CINEMA) || sessao.getEspetaculo().getTipo().equals(TipoDeEspetaculo.SHOW)) {			 
-			if(percentualIngressosDisponiveis(sessao) <= 0.05) { 
+			if(sessao.percentualIngressosDisponiveis() <= 0.05) { 
 				preco = sessao.getPreco().add(sessao.getPreco().multiply(BigDecimal.valueOf(0.10)));
 			} else {
 				preco = sessao.getPreco();
 			}
 		} else if(sessao.getEspetaculo().getTipo().equals(TipoDeEspetaculo.BALLET) || sessao.getEspetaculo().getTipo().equals(TipoDeEspetaculo.ORQUESTRA)) {
-			if(percentualIngressosDisponiveis(sessao) <= 0.50) { 
+			if(sessao.percentualIngressosDisponiveis() <= 0.50) { 
 				preco = sessao.getPreco().add(sessao.getPreco().multiply(BigDecimal.valueOf(0.20)));
 			} else {
 				preco = sessao.getPreco();
