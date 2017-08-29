@@ -111,4 +111,8 @@ public class Sessao {
 	public double percentualIngressosDisponiveis() {		
 		return (getTotalIngressos() - getIngressosReservados()) / getTotalIngressos().doubleValue();
 	}
+	
+	public BigDecimal aumentaPreco (double aumento) {
+		return getPreco().multiply(BigDecimal.valueOf(1+aumento));
+	}
 }
