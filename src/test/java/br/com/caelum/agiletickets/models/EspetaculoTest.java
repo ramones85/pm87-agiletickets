@@ -131,7 +131,7 @@ public class EspetaculoTest {
 		List<Sessao> sessoes = new ArrayList<Sessao>();
 		sessoes = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
 		
-		Assert.assertEquals(9, sessoes.size());
+		Assert.assertEquals(3, sessoes.size());
 	}
 	
 	@Test(expected = Exception.class)  
