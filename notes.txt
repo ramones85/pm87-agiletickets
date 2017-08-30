@@ -1,0 +1,78 @@
+Notas do curso Práticas Ágeis - Caellum - 2017
+
+agilemanifesto.org
+
+controle de expectativas
+
+Código legado. Código desenvolvido em outras tecnologias, feito a muito tempo, feito por outro programador.
+
+METODO MERGE
+Muda o foco para o branch master
+git checkout master
+Atualiza o meu master local
+git pull
+Muda o foco para work
+git checkout work
+Junta o work com o master
+git merge master
+Muda para o master
+git checkout master
+Faz o merge
+git merge work
+manda para o servidor
+git push
+
+METODO REBASE
+Muda o foco para o branch master
+git checkout master
+Atualiza o meu master local
+git pull
+Muda o foco para work
+git checkout work
+Junta o work com o master
+git rebase master
+Muda para o master
+git checkout master
+Faz o merge
+git merge work
+manda para o servidor
+git push
+
+#Código 
+Deve seguir padrões
+Deve ser comentado
+Deve ter regras de negócio bem definidas
+Deve crescer corretamente
+
+
+JUnit - Documenta as funcionalidades (regras de negócio) do sistema. Melhor tipo de documentação. Sempre está atualizada pq senão não roda.
+
+
+*********************
+Pull e push frequentes. 
+:
+Integração contínua
+
+Code review > To fix > Approving > Production
+
+
+*********************
+Para o Plone
+
+Desenvolvimento
+
+O desenvolvimento se inicia com a criação de uma máquina virtual para cada desenvolvedor. Esse desenvolvedor irá criar um branch para ele. Esse branch deve estar sempre atualizado. 
+Push e Pulls frequentes, integração contínua. 
+
+Homologação pelo usuário
+
+Politica de testes pre produção
+
+Código em produção
+
+
+
+
+
+*********************
+
